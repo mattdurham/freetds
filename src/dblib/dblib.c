@@ -1194,6 +1194,7 @@ tdsdbopen(LOGINREC * login, const char *server, int msdblib)
 		dbclose(dbproc);
 		return NULL;
 	}
+    connection->encryption_level = TDS_ENCRYPTION_REQUEST;
 	connection->option_flag2 &= ~0x02;	/* we're not an ODBC driver */
 	tds_fix_login(connection);		/* initialize from Environment variables */
 

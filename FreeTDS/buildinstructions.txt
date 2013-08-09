@@ -1,0 +1,8 @@
+--Need to call the below to enable OPENSSL and enable MSDBLIB
+./configure --with-openssl=/usr/lib --enable-msdblib
+--The below actually builds the product
+make; make install; make clean
+--Then you need to set the RPATH so it knows where to look for the dylibs
+install_name_tool -id "@rpath/../Frameworks/libsybdb.5.dylib" libsybdb.5.dylib
+install_name_tool -id "@rpath/../Frameworks/libct.4.dylib" libct.4.dylib 
+--This will give you your libs you can use
