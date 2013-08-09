@@ -1,0 +1,1 @@
+!define PRODUCT_VERSION "dev.0.92.377"
