@@ -1121,6 +1121,7 @@ init_dboptions(void)
 	return dbopts;
 }
 
+
 /** \internal
  * \ingroup dblib_internal
  * \brief Form a connection with the server.
@@ -1194,8 +1195,7 @@ tdsdbopen(LOGINREC * login, const char *server, int msdblib)
 		dbclose(dbproc);
 		return NULL;
 	}
-    connection->encryption_level = TDS_ENCRYPTION_REQUEST;
-	connection->option_flag2 &= ~0x02;	/* we're not an ODBC driver */
+    connection->option_flag2 &= ~0x02;	/* we're not an ODBC driver */
 	tds_fix_login(connection);		/* initialize from Environment variables */
 
 	dbproc->chkintr = NULL;
@@ -1214,7 +1214,8 @@ tdsdbopen(LOGINREC * login, const char *server, int msdblib)
 	}
 
 	TDS_MUTEX_UNLOCK(&dblib_mutex);
-
+    connection->encryption_level = TDS_ENCRYPTION_REQUEST;
+    
 	if (TDS_FAILED(tds_connect_and_login(dbproc->tds_socket, connection))) {
 		tds_free_login(connection);
 		dbclose(dbproc);

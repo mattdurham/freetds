@@ -1,0 +1,10 @@
+*.o
+*.po
+*.plo
+*.a
+*.lo
+.DS_Store
+*.la
+*.lai
+*.dylib
+*.so
